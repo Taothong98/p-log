@@ -1,0 +1,42 @@
+
+services:
+
+  jupyter:
+    build:
+      context: ./dev_jupyter
+      dockerfile: dockerfile_rockylinux
+    # image: taothong/u-jupyter:3.0
+    ports:
+      - "8888:8888"
+      - "8822:22"
+    volumes:
+      - ./main_data:/home/master/nas
+      - ./dev_jupyter/requirements_python.txt:/home/master/requirements_python.txt
+      - ./dev_jupyter/requirements_java.txt:/home/master/requirements_java.txt
+      - ./dev_jupyter/dockerfile:/home/master/dockerfile
+      - ./dev_jupyter/entrypoint.sh:/entrypoint.sh      
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+      - JUPYTER_TOKEN=master
+    container_name: jupyter
+    restart: unless-stopped    
+
+
+  logstash:
+    build:
+      context: .
+      dockerfile: dev/dockerfile
+    # image: taothong/logstash_autodel:1.0
+    container_name: logstash    
+    ports:
+      - "5044:5044"
+      - "5044:5044/udp"
+    cap_add:
+      - SYS_PTRACE
+    volumes:
+      - ./main_data/outputlogs:/var/log/logstash/outputlogs
+      - ./main_data/createdfile.log:/home/link/createdfile.log
+      - ./logstash.conf:/etc/logstash/conf.d/logstash.conf
+      # - ./action.sh:/home/link/action.sh
+
+

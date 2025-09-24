@@ -1,0 +1,58 @@
+FROM ubuntu:22.04
+
+# ตั้งค่า environment variables เพื่อหลีกเลี่ยง interactive prompts
+ENV DEBIAN_FRONTEND=noninteractive
+
+# อัปเดตระบบและติดตั้ง Linux dependencies รวม openjdk-11-jdk
+RUN apt-get update && \
+    apt-get install -y software-properties-common && \
+    add-apt-repository universe && \
+    add-apt-repository multiverse && \
+    apt-get update && \
+    apt-get install -y \
+        python3 \
+        python3-pip \
+        python3-dev \
+        build-essential \
+        openjdk-11-jdk \
+        sudo && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* || { echo "Failed to install packages"; exit 1; }
+
+# ตั้งค่า JAVA_HOME
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+ENV PATH=$JAVA_HOME/bin:/usr/local/bin:/home/master/.local/bin:$PATH
+
+# สร้างผู้ใช้ master และตั้งรหัสผ่าน
+RUN useradd -m -s /bin/bash master && \
+    echo "master:master" | chpasswd && \
+    usermod -aG sudo master
+
+# คัดลอก requirements files สำหรับ Python และ Java
+COPY requirements_python.txt /home/master/requirements_python.txt
+COPY requirements_java.txt /home/master/requirements_java.txt
+
+# ติดตั้ง Python libraries ใน global site-packages ในฐานะ root
+USER root
+RUN pip3 install --no-cache-dir -r /home/master/requirements_python.txt && \
+    chown -R master:master /home/master
+
+# สลับไปใช้ผู้ใช้ master
+USER master
+WORKDIR /home/master/nas
+
+# สร้าง work directory และตั้งค่า permissions
+RUN mkdir -p /home/master/nas && \
+    chown -R master:master /home/master/nas
+
+# กำหนดรหัสผ่านสำหรับ Jupyter
+ENV JUPYTER_TOKEN=master
+
+# เปิดใช้งาน Jupyter Lab
+ENV JUPYTER_ENABLE_LAB=yes
+
+# เปิด port สำหรับ Jupyter
+EXPOSE 8888
+
+# คำสั่งเริ่มต้น
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--no-browser", "--NotebookApp.token=${JUPYTER_TOKEN}"]

@@ -1,0 +1,50 @@
+FROM debian:bookworm-backports
+RUN mkdir /home/link
+RUN apt update
+RUN apt install curl -y
+
+COPY dev/start.sh /home/link
+RUN chmod +x /home/link/start.sh
+
+RUN apt install inotify-tools -y
+COPY dev/cheakdir.sh /home/link
+RUN chmod +x /home/link/cheakdir.sh
+
+COPY dev/action.sh /home/link
+RUN chmod +x /home/link/action.sh
+
+COPY dev/createdfile.log /home/link
+
+RUN mkdir /var/log/logstash
+RUN mkdir /var/log/logstash/outputlogs
+# --------------------------------------------------------------------
+
+
+RUN apt install gnupg -y
+RUN curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | gpg --dearmor -o /usr/share/keyrings/elastic.gpg
+RUN echo "deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main" | tee -a /etc/apt/sources.list.d/elastic-7.x.list
+RUN apt update
+RUN apt install logstash   
+COPY logstash.conf /etc/logstash/conf.d/
+
+CMD ["/bin/bash","-c","/home/link/start.sh"]
+EXPOSE 5044
+
+
+
+
+# docker build -t logstash_autodel .
+# docker tag logstash_autodel:latest taothong/logstash_autodel:2.0
+# docker run --name logstash_auto -p 5044:5044 -d taothong/logstash_autodel:2.0
+# docker exec -it logstash_auto bash   
+
+
+
+
+    # service logstash restart
+    # service --status-all
+    # service logstash stop    
+    # service logstash start
+    # service logstash status
+    # Usage:  {start|force-start|stop|force-start|force-stop|status|restart}
+

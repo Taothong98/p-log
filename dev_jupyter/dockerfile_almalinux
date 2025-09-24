@@ -1,0 +1,52 @@
+FROM almalinux:9
+
+# ตั้งค่า environment variables เพื่อหลีกเลี่ยง interactive prompts
+ENV PYTHONUNBUFFERED=1 \
+    JUPYTER_TOKEN=master \
+    JUPYTER_ENABLE_LAB=yes
+
+# อัปเดตระบบและติดตั้ง dependencies
+RUN dnf update -y && \
+    dnf install -y \
+        python3 \
+        python3-pip \
+        python3-devel \
+        gcc \
+        java-11-openjdk-devel \
+        sudo \
+        bash && \
+    dnf clean all && \
+    rm -rf /var/cache/dnf
+
+# ตั้งค่า JAVA_HOME
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+ENV PATH=$JAVA_HOME/bin:/usr/local/bin:/home/master/.local/bin:$PATH
+
+# สร้างผู้ใช้ master และตั้งรหัสผ่าน
+RUN useradd -m -s /bin/bash master && \
+    echo "master:master" | chpasswd && \
+    usermod -aG wheel master && \
+    echo "master ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/master
+
+# คัดลอก requirements files สำหรับ Python และ Java
+COPY requirements_python.txt /home/master/requirements_python.txt
+COPY requirements_java.txt /home/master/requirements_java.txt
+
+# ติดตั้ง Python libraries ใน global site-packages
+RUN pip3 install --no-cache-dir -U pip setuptools wheel && \
+    pip3 install --no-cache-dir -r /home/master/requirements_python.txt && \
+    chown -R master:master /home/master
+
+# สลับไปใช้ผู้ใช้ master
+USER master
+WORKDIR /home/master/nas
+
+# สร้าง work directory และตั้งค่า permissions
+RUN mkdir -p /home/master/nas && \
+    chown -R master:master /home/master/nas
+
+# เปิด port สำหรับ Jupyter
+EXPOSE 8888
+
+# คำสั่งเริ่มต้น
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--no-browser", "--NotebookApp.token=${JUPYTER_TOKEN}"]

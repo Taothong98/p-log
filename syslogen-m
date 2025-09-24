@@ -1,0 +1,10 @@
+pip install syslogen
+sudo yum install -y iputils
+
+
+
+ping logstash
+python3 -m syslogen logstash -p 5044 -i /home/master/nas/examples_messages.txt -c 4
+
+docker exec logstash df -h
+docker logs logstash

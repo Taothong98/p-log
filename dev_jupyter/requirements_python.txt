@@ -1,0 +1,5 @@
+jupyter==1.0.0
+jupyterlab==4.0.11
+python-weka-wrapper3==0.2.12
+JPype1==1.5.0
+syslogen
