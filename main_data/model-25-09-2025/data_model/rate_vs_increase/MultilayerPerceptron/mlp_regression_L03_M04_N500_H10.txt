@@ -1,0 +1,87 @@
+
+Options: -L 0.3 -M 0.4 -N 500 -H 10 
+
+=== Classifier model (full training set) ===
+
+Linear Node 0
+    Inputs    Weights
+    Threshold    0.31113844954844094
+    Node 1    -0.9818362289121179
+    Node 2    1.3739110560367127
+    Node 3    1.262252598322969
+    Node 4    -1.3131687641343952
+    Node 5    1.4024456753572536
+    Node 6    1.2543647838917868
+    Node 7    1.3155770453852833
+    Node 8    -1.3269772268951072
+    Node 9    0.2279514513652638
+    Node 10    0.3467430892037329
+Sigmoid Node 1
+    Inputs    Weights
+    Threshold    -2.8957527671779744
+    Attrib target_send_rate    -0.961400149185189
+Sigmoid Node 2
+    Inputs    Weights
+    Threshold    -3.8518119551969696
+    Attrib target_send_rate    1.7092810575315025
+Sigmoid Node 3
+    Inputs    Weights
+    Threshold    -3.684494081148076
+    Attrib target_send_rate    1.570811082836995
+Sigmoid Node 4
+    Inputs    Weights
+    Threshold    -0.6369399873654289
+    Attrib target_send_rate    -2.0054399491454817
+Sigmoid Node 5
+    Inputs    Weights
+    Threshold    -3.9000274477737475
+    Attrib target_send_rate    1.7467809979096653
+Sigmoid Node 6
+    Inputs    Weights
+    Threshold    -3.67364140965622
+    Attrib target_send_rate    1.5609428229043403
+Sigmoid Node 7
+    Inputs    Weights
+    Threshold    -3.7610479171730398
+    Attrib target_send_rate    1.6366590974032342
+Sigmoid Node 8
+    Inputs    Weights
+    Threshold    -2.8712972972151882
+    Attrib target_send_rate    -1.1625925724440889
+Sigmoid Node 9
+    Inputs    Weights
+    Threshold    -3.2568250421266325
+    Attrib target_send_rate    0.24694818750277933
+Sigmoid Node 10
+    Inputs    Weights
+    Threshold    -3.2688686035328574
+    Attrib target_send_rate    0.38631059637914106
+Class 
+    Input
+    Node 0
+
+
+Time taken to build model: 0.42 seconds
+
+Time taken to test model on training data: 0.01 seconds
+
+=== Error on training data ===
+
+Correlation coefficient                  0.9891
+Mean absolute error                 113294.2373
+Root mean squared error             130442.9848
+Relative absolute error                 16.6492 %
+Root relative squared error             16.5641 %
+Total Number of Instances              800     
+
+Time taken to test model on test data: 0 seconds
+
+=== Error on test data ===
+
+Correlation coefficient                  0.9858
+Mean absolute error                 118856.7189
+Root mean squared error             140234.2618
+Relative absolute error                 17.5331 %
+Root relative squared error             18.1226 %
+Total Number of Instances              201     
+

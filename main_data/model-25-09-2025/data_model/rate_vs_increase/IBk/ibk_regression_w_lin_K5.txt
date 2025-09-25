@@ -1,0 +1,33 @@
+
+Options: -F -K 5 
+
+=== Classifier model (full training set) ===
+
+IB1 instance-based classifier
+using 5 similarity-weighted nearest neighbour(s) for classification
+
+
+Time taken to build model: 0.17 seconds
+
+Time taken to test model on training data: 0.05 seconds
+
+=== Error on training data ===
+
+Correlation coefficient                  0.9894
+Mean absolute error                  73203.5688
+Root mean squared error             114204.8049
+Relative absolute error                 10.7577 %
+Root relative squared error             14.5021 %
+Total Number of Instances              800     
+
+Time taken to test model on test data: 0.01 seconds
+
+=== Error on test data ===
+
+Correlation coefficient                  0.9808
+Mean absolute error                  96495.9884
+Root mean squared error             152111.869 
+Relative absolute error                 14.2345 %
+Root relative squared error             19.6575 %
+Total Number of Instances              201     
+

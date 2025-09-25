@@ -1,0 +1,5 @@
+Algorithm,Best_Params,Correlation,MAE,RMSE
+LinearRegression,"S=0, R=0.0001",0.9862,82822.6951,128491.5873
+RandomForest,"I=100, K=0, depth=10",0.9821,86043.3285,148425.4245
+MultilayerPerceptron,"L=0.1, M=0.2, N=100, H=a",0.9864,98416.9141,128540.0703
+IBk,"K=7, weight_option=-I",0.9814,93916.7198,149671.7634

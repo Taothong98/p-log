@@ -1,0 +1,22 @@
+sudo yum install wget unzip -y
+
+
+
+
+sudo mkdir -p /opt/weka
+
+
+# ดาวน์โหลดไฟล์ Weka 3.8.5
+sudo wget https://prdownloads.sourceforge.net/weka/weka-3-8-5.zip -P /opt/weka/
+
+# แตกไฟล์ไปยัง /opt/weka/
+sudo unzip /opt/weka/weka-3-8-5.zip -d /opt/weka/
+
+# ดาวน์โหลด mtj.jar (สำหรับ Matrix)
+sudo wget https://repo1.maven.org/maven2/com/googlecode/matrix-toolkits-java/mtj/1.0.4/mtj-1.0.4.jar -P /opt/weka/weka-3-8-5/
+
+# ดาวน์โหลด core.jar (สำหรับ Matrix)
+sudo wget https://repo1.maven.org/maven2/com/github/fommil/netlib/core/1.1.2/core-1.1.2.jar -P /opt/weka/weka-3-8-5/
+
+# ดาวน์โหลด native_ref-java.jar (สำหรับ Matrix)
+sudo wget https://repo1.maven.org/maven2/com/github/fommil/netlib/native_ref-java/1.1.2/native_ref-java-1.1.2.jar -P /opt/weka/weka-3-8-5/

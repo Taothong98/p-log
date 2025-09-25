@@ -1,0 +1,37 @@
+
+Options: -S 2 -R 0.0001 
+
+=== Classifier model (full training set) ===
+
+
+Linear Regression Model
+
+sum_size_increase_bytes =
+
+   2690.6227 * target_send_rate +
+ -11548.2888
+
+Time taken to build model: 0.21 seconds
+
+Time taken to test model on training data: 0.01 seconds
+
+=== Error on training data ===
+
+Correlation coefficient                  0.9892
+Mean absolute error                  74574.6278
+Root mean squared error             115360.5143
+Relative absolute error                 10.9591 %
+Root relative squared error             14.6489 %
+Total Number of Instances              800     
+
+Time taken to test model on test data: 0 seconds
+
+=== Error on test data ===
+
+Correlation coefficient                  0.9862
+Mean absolute error                  82822.6951
+Root mean squared error             128491.5873
+Relative absolute error                 12.2175 %
+Root relative squared error             16.6051 %
+Total Number of Instances              201     
+

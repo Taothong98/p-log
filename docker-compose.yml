@@ -23,10 +23,10 @@ services:
 
 
   logstash:
-    build:
-      context: .
-      dockerfile: dev/dockerfile
-    # image: taothong/logstash_autodel:1.0
+    # build:
+    #   context: .
+    #   dockerfile: dev/dockerfile
+    image: taothong/logstash_autodel:1.0
     container_name: logstash    
     ports:
       - "5044:5044"
