@@ -1,0 +1,33 @@
+
+Options: -I -K 3 
+
+=== Classifier model (full training set) ===
+
+IB1 instance-based classifier
+using 3 inverse-distance-weighted nearest neighbour(s) for classification
+
+
+Time taken to build model: 0.16 seconds
+
+Time taken to test model on training data: 0.05 seconds
+
+=== Error on training data ===
+
+Correlation coefficient                  0.9954
+Mean absolute error                  46594.1807
+Root mean squared error              75385.4791
+Relative absolute error                  6.8473 %
+Root relative squared error              9.5727 %
+Total Number of Instances              800     
+
+Time taken to test model on test data: 0.01 seconds
+
+=== Error on test data ===
+
+Correlation coefficient                  0.9813
+Mean absolute error                  92784.5763
+Root mean squared error             150291.2014
+Relative absolute error                 13.6871 %
+Root relative squared error             19.4223 %
+Total Number of Instances              201     
+

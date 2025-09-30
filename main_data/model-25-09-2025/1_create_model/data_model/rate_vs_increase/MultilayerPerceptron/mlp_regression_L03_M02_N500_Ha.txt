@@ -1,0 +1,42 @@
+
+Options: -L 0.3 -M 0.2 -N 500 -H a 
+
+=== Classifier model (full training set) ===
+
+Linear Node 0
+    Inputs    Weights
+    Threshold    1.3717609389185728
+    Node 1    -2.852689486523884
+Sigmoid Node 1
+    Inputs    Weights
+    Threshold    0.09806066634571255
+    Attrib target_send_rate    -1.437883474397351
+Class 
+    Input
+    Node 0
+
+
+Time taken to build model: 0.28 seconds
+
+Time taken to test model on training data: 0.01 seconds
+
+=== Error on training data ===
+
+Correlation coefficient                  0.9885
+Mean absolute error                 133784.7697
+Root mean squared error             149920.5707
+Relative absolute error                 19.6604 %
+Root relative squared error             19.0374 %
+Total Number of Instances              800     
+
+Time taken to test model on test data: 0 seconds
+
+=== Error on test data ===
+
+Correlation coefficient                  0.9862
+Mean absolute error                 135102.9882
+Root mean squared error             152506.9222
+Relative absolute error                 19.9296 %
+Root relative squared error             19.7086 %
+Total Number of Instances              201     
+
