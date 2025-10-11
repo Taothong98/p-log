@@ -39,20 +39,17 @@ services:
       - ./logstash.conf:/etc/logstash/conf.d/logstash.conf
       # - ./action.sh:/home/link/action.sh
 
-  node-exporter:
-    image: prom/node-exporter:latest
-    networks:
-      - monitor-net
-    ports:
-      - 9090:9100
 
   prometheus:
     image: prom/prometheus:latest
-    networks:
-      - monitor-net
     ports:
       - 9090:9090
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
     command: 
       - --config.file=/etc/prometheus/prometheus.yml
+
+  node-exporter:
+    image: prom/node-exporter:latest
+    ports:
+      - 9100:9100
