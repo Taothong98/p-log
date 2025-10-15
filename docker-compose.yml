@@ -16,10 +16,11 @@ services:
       - ./dev_jupyter/dockerfile:/home/master/dockerfile
       - ./dev_jupyter/entrypoint.sh:/entrypoint.sh      
     environment:
+      - TZ=Asia/Bangkok 
       - JUPYTER_ENABLE_LAB=yes
       - JUPYTER_TOKEN=master
     container_name: jupyter
-    restart: unless-stopped    
+    restart: unless-stopped   
 
 # ----------------------------------------------------------------------------
   logstash:
@@ -38,18 +39,26 @@ services:
       - ./main_data/createdfile.log:/home/link/createdfile.log
       - ./logstash.conf:/etc/logstash/conf.d/logstash.conf
       # - ./action.sh:/home/link/action.sh
-
+    restart: unless-stopped  
 
   prometheus:
     image: prom/prometheus:latest
-    ports:
-      - 9090:9090
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
     command: 
       - --config.file=/etc/prometheus/prometheus.yml
+    # ports:
+    #   - 9090:9090
+    network_mode: host      
+    environment:
+      - TZ=Asia/Bangkok
+    restart: unless-stopped  
 
   node-exporter:
     image: prom/node-exporter:latest
-    ports:
-      - 9100:9100
+    # ports:
+    #   - 9100:9100
+    network_mode: host
+    environment:
+      - TZ=Asia/Bangkok
+    restart: unless-stopped        

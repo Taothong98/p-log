@@ -10,4 +10,9 @@ scrape_configs:
   - job_name: "job-node-exporter"
     scrape_interval: 9s
     static_configs:
-      - targets: ["node-exporter:9100"]
+      # - targets: ["node-exporter:9100"]
+      # - targets: ["172.16.1.109:9100"]
+      - targets: ["localhost:9100"]
+
+
+
