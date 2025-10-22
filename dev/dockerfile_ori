@@ -1,0 +1,5 @@
+# 1. เริ่มต้นจาก Image สำเร็จรูปเวอร์ชัน 8.19.5 จาก Elastic โดยตรง
+FROM docker.elastic.co/logstash/logstash:8.19.5
+RUN /usr/share/logstash/bin/logstash-plugin install logstash-filter-cipher
+# 2. Copy ไฟล์ config ของคุณเข้าไปใน Path ที่ถูกต้องสำหรับ Image นี้
+COPY logstash.conf /usr/share/logstash/pipeline/

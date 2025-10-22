@@ -13,9 +13,9 @@ import numpy as np
 # ** ตั้งค่าการทดสอบ Combination ที่นี่ **
 
 # 1. กำหนดช่วงของ Rate ที่ต้องการทดสอบ (Start, End, Step)
-RATE_START = 0
+RATE_START = 100
 RATE_END = 1000
-RATE_STEP = 1
+RATE_STEP = 100
 
 # 2. กำหนดระยะเวลาที่จะทดสอบในแต่ละ Rate (หน่วยเป็นวินาที)
 DURATION_PER_RATE_SECONDS = 10
@@ -24,7 +24,7 @@ DURATION_PER_RATE_SECONDS = 10
 TOTAL_REPETITIONS = 30
 
 # 4. กำหนดเวลาพักระหว่างการทดสอบแต่ละ Combination (หน่วยเป็นวินาที)
-REST_PERIOD_SECONDS = 60
+REST_PERIOD_SECONDS = 1
 
 # 5. กำหนดว่าจะให้เริ่มทำงานต่อจาก Loop ที่เท่าไหร่ (เริ่มใหม่ = 1)
 START_FROM_LOOP = 1

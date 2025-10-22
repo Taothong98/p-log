@@ -23,11 +23,15 @@ services:
     restart: unless-stopped   
 
 # ----------------------------------------------------------------------------
+  # docker logs logstash 
+  # /usr/share/logstash/bin/logstash --version
   logstash:
-    # build:
-    #   context: .
-    #   dockerfile: dev/dockerfile
-    image: taothong/logstash_autodel:1.0
+    build:
+      context: .
+      dockerfile: dev/dockerfile
+      # dockerfile: dev/dockerfile_ori
+
+    # image: taothong/logstash_autodel:1.0
     container_name: logstash    
     ports:
       - "5044:5044"

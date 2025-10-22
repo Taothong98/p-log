@@ -1,2 +1,2 @@
-The file 'Syslog-2025-09-24.log' at path '/var/log/logstash/outputlogs/' was MODIFY
-There are 3 files. No need to delete any files.
+The file 'Syslog-encrypted-2025-10-16.log' at path '/var/log/logstash/outputlogs/' was DELETE
+There are 0 files. No need to delete any files.

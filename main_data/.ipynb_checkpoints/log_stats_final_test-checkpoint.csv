@@ -1,0 +1,6 @@
+timestamp,loop_number,total_loops,repetition,target_send_rate,experiment_status,total_size_bytes,total_size_mb,size_increase_bytes,size_increase_mb,file_count,latest_file_name,latest_file_size_bytes,latest_file_size_mb
+2025-10-16T16:00:23.571129,1,30030,1,0,Loop 1/30030 | Rep 1/30 | Rate 0 msg/s,0,0.0,0,0.0,0,N/A,0,0.0
+2025-10-16T16:01:18.326315,1,30030,1,0,Loop 1/30030 | Rep 1/30 | Rate 0 msg/s,0,0.0,0,0.0,0,N/A,0,0.0
+2025-10-16T16:01:28.642424,2,30030,1,1,Loop 2/30030 | Rep 1/30 | Rate 1 msg/s,0,0.0,0,0.0,0,N/A,0,0.0
+2025-10-16T16:02:18.392904,2,30030,1,1,Loop 2/30030 | Rep 1/30 | Rate 1 msg/s,0,0.0,0,0.0,0,N/A,0,0.0
+2025-10-16T16:02:33.714405,3,30030,1,2,Loop 3/30030 | Rep 1/30 | Rate 2 msg/s,0,0.0,0,0.0,0,N/A,0,0.0
